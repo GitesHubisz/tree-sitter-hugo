@@ -13,39 +13,48 @@
   "externals": [
     {
       "type": "SYMBOL",
-      "name": "_start_tag_name"
+      "name": "_start_tag_name",
+      "value": null
     },
     {
       "type": "SYMBOL",
-      "name": "_script_start_tag_name"
+      "name": "_script_start_tag_name",
+      "value": null
     },
     {
       "type": "SYMBOL",
-      "name": "_style_start_tag_name"
+      "name": "_style_start_tag_name",
+      "value": null
     },
     {
       "type": "SYMBOL",
-      "name": "_end_tag_name"
+      "name": "_end_tag_name",
+      "value": null
     },
     {
       "type": "SYMBOL",
-      "name": "erroneous_end_tag_name"
+      "name": "erroneous_end_tag_name",
+      "value": null
     },
     {
       "type": "SYMBOL",
-      "name": "raw_text"
+      "name": "raw_text",
+      "value": null
     },
     {
       "type": "SYMBOL",
-      "name": "comment"
+      "name": "comment",
+      "value": null
     },
     {
       "type": "SYMBOL",
-      "name": "HUGO_DOUBLE_BRACE_OPEN"
+      "name": "HUGO_DOUBLE_BRACE_OPEN",
+      "value": null
     },
     {
       "type": "SYMBOL",
-      "name": "HUGO_DOUBLE_BRACE_CLOSE"
+      "name": "HUGO_DOUBLE_BRACE_CLOSE",
+      "value": null
     }
   ],
   "rules": {
