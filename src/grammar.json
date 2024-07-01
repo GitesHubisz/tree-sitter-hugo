@@ -1,0 +1,25 @@
+{
+  "name": "hugo",
+  "externals": [
+    "_start_tag_name",
+    "_script_start_tag_name",
+    "_style_start_tag_name",
+    "_end_tag_name",
+    "erroneous_end_tag_name",
+    "raw_text",
+    "comment",
+    "HUGO_DOUBLE_BRACE_OPEN",
+    "HUGO_DOUBLE_BRACE_CLOSE"
+  ],
+  "extras": ["$.comment", "/\\s+/"],
+  "conflicts": [],
+  "inline": [],
+  "rules": {
+    "document": {
+      "type": "seq",
+      "members": [
+        {"type": "repeat", "rule": "_node"}
+      ]
+    }
+  }
+}
