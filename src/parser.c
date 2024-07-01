@@ -6,7 +6,7 @@ enum TokenType {
   HTML_TOKEN,
   GO_TEMPLATE_TOKEN,
   HUGO_DOUBLE_BRACE_OPEN,
-  HUGO_DOUBLE_BRACE_CLOSE
+  HUGO_DOUBLE_BRACE_CLOSE,
 };
 
 void *tree_sitter_hugo_external_scanner_create() {
