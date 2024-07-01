@@ -1,27 +1,64 @@
 {
   "name": "hugo",
-  "externals": [
-    { "type": "STRING", "value": "_start_tag_name" },
-    { "type": "STRING", "value": "_script_start_tag_name" },
-    { "type": "STRING", "value": "_style_start_tag_name" },
-    { "type": "STRING", "value": "_end_tag_name" },
-    { "type": "STRING", "value": "erroneous_end_tag_name" },
-    { "type": "STRING", "value": "raw_text" },
-    { "type": "STRING", "value": "comment" },
-    { "type": "STRING", "value": "HUGO_DOUBLE_BRACE_OPEN" },
-    { "type": "STRING", "value": "HUGO_DOUBLE_BRACE_CLOSE" }
-  ],
   "extras": [
-    { "type": "SYMBOL", "name": "comment" },
-    { "type": "PATTERN", "value": "\\s+" }
+    {
+      "type": "PATTERN",
+      "pattern": "\\s+"
+    },
+    {
+      "type": "ALIAS",
+      "content": "comment"
+    }
   ],
-  "conflicts": [],
-  "inline": [],
+  "externals": [
+    {
+      "type": "SYMBOL",
+      "name": "_start_tag_name"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_script_start_tag_name"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_style_start_tag_name"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_end_tag_name"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "erroneous_end_tag_name"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "raw_text"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "comment"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "HUGO_DOUBLE_BRACE_OPEN"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "HUGO_DOUBLE_BRACE_CLOSE"
+    }
+  ],
   "rules": {
     "document": {
       "type": "SEQ",
       "members": [
-        { "type": "REPEAT", "rule": { "type": "SYMBOL", "name": "_node" } }
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "ALIAS",
+            "content": "_node"
+          }
+        }
       ]
     }
   }
