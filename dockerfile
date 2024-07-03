@@ -1,21 +1,26 @@
-# Use a Node.js image to run the build
-FROM node:14
+FROM node:14-buster AS build
 
-# Install tree-sitter CLI globally with unsafe permissions
-RUN npm install -g tree-sitter-cli --unsafe-perm
+# Zainstaluj narzędzia do kompilacji
+RUN apt-get update && apt-get install -y build-essential git
 
-# Create app directory and copy content
+# Sklonuj repozytorium (lub skopiuj pliki lokalnie)
 WORKDIR /app
-COPY . .
+COPY . /app
 
-# Build the parsers
-WORKDIR /app/tree-sitter-html
-RUN tree-sitter generate
-WORKDIR /app/tree-sitter-go-template
-RUN tree-sitter generate
-WORKDIR /app/tree-sitter-hugo
-RUN tree-sitter generate
+# Buduj parser
+# Zakładam, że masz skrypty w package.json dla tych zadań
+RUN npm install && npm run build
 
-# Build the combined parser
+# Uruchomienie
+FROM node:14-buster
+COPY --from=build /app /app
 WORKDIR /app
-RUN tree-sitter build-wasm
+
+# Instalacja Tree-sitter CLI globalnie
+RUN npm install -g tree-sitter-cli
+
+# Eksponuj port dla playground
+EXPOSE 8080
+
+# Uruchom playground
+CMD ["tree-sitter", "playground"]
