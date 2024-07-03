@@ -1,6 +1,6 @@
 # Rust artifacts
-Cargo.lock
-target/
+#Cargo.lock
+#target/
 
 # Node artifacts
 #build/
@@ -9,30 +9,30 @@ target/
 #*.tgz
 
 # Swift artifacts
-.build/
+#.build/
 
 # Go artifacts
-go.sum
-_obj/
+#go.sum
+#_obj/
 
 # Python artifacts
-.venv/
-dist/
-*.egg-info
-*.whl
+#.venv/
+#dist/
+#*.egg-info
+#*.whl
 
 # C artifacts
-*.a
-*.so
-*.so.*
-*.dylib
-*.dll
-*.pc
+#*.a
+#*.so
+#*.so.*
+#*.dylib
+#*.dll
+#*.pc
 
 # Example dirs
-/examples/*/
+#/examples/*/
 
 # Grammar volatiles
-*.wasm
-*.obj
-*.o
+#*.wasm
+#*.obj
+#*.o
