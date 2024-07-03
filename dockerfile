@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt update -qq && apt install -yqq curl && \
     curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && \
-    apt install -yqq nodejs python3
+    apt install -yqq nodejs python3 make
 
 COPY package*.json ./
 
