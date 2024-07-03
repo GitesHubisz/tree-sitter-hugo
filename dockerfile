@@ -1,26 +1,26 @@
-FROM node:14-buster AS build
+# Etap budowy
+FROM node:16-buster AS build
 
-# Zainstaluj narzędzia do kompilacji
+# Zainstaluj narzędzia do kompilacji (możliwe, że potrzebne do budowy zależności npm)
 RUN apt-get update && apt-get install -y build-essential git
 
-# Sklonuj repozytorium (lub skopiuj pliki lokalnie)
+# Skopiuj pliki projektu
 WORKDIR /app
-COPY . /app
+COPY . .
 
-# Buduj parser
-# Zakładam, że masz skrypty w package.json dla tych zadań
+# Instaluj zależności i buduj
 RUN npm install && npm run build
 
-# Uruchomienie
-FROM node:14-buster
+# Etap uruchomieniowy
+FROM node:16-buster
 COPY --from=build /app /app
 WORKDIR /app
 
-# Instalacja Tree-sitter CLI globalnie
-RUN npm install -g tree-sitter-cli
+# Instalacja zależności tylko do uruchomienia, jeśli to konieczne
+# RUN npm install --only=production
 
-# Eksponuj port dla playground
-EXPOSE 8080
+# Eksponuj port serwera, jeśli masz aplikację nasłuchującą na tym porcie
+# EXPOSE 8080
 
-# Uruchom playground
-CMD ["tree-sitter", "playground"]
+# Ustawienie komendy uruchomieniowej
+CMD ["npm", "start"] # Lub coś innego, co uruchamia Twoją aplikację
