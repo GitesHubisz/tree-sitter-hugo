@@ -1,11 +1,11 @@
-/// <reference types="tree-sitter-cli/dsl" />
+// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
-module.exports = grammar({
-  name: "hugo",
+// module.exports = grammar({
+//  name: "hugo",
 
-  rules: {
+//  rules: {
     // TODO: add the actual grammar rules
     source_file: $ => "hello"
-  }
-});
+//  }
+// });
