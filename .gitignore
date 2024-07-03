@@ -3,10 +3,10 @@ Cargo.lock
 target/
 
 # Node artifacts
-build/
-prebuilds/
-node_modules/
-*.tgz
+#build/
+#prebuilds/
+#node_modules/
+#*.tgz
 
 # Swift artifacts
 .build/
