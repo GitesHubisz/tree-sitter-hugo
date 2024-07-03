@@ -6,7 +6,6 @@
     "build": "gcc -c parser.c -o parser.o && gcc -c grammar.c -o grammar.o && gcc parser.o grammar.o -o tree-sitter-hugo"
   },
   "dependencies": {
-    "tree-sitter-html": "latest",
-    "tree-sitter-go-template": "latest"
+    "tree-sitter-html": "latest"
   }
 }
