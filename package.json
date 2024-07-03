@@ -1,55 +1,12 @@
 {
   "name": "tree-sitter-hugo",
   "version": "0.0.1",
-  "description": "Hugo grammar for tree-sitter",
-  "repository": "github:giteshubisz/tree-sitter-hugo",
-  "license": "MIT",
-  "main": "bindings/node",
-  "types": "bindings/node",
-  "keywords": [
-    "incremental",
-    "parsing",
-    "tree-sitter",
-    "hugo"
-  ],
-  "files": [
-    "grammar.js",
-    "binding.gyp",
-    "prebuilds/**",
-    "bindings/node/*",
-    "queries/*",
-    "src/**",
-    "tree-sitter-html/**",
-    "tree-sitter-go-template/**"
-  ],
-  "dependencies": {
-    "node-addon-api": "^7.1.0",
-    "node-gyp-build": "^4.8.0"
-  },
-  "devDependencies": {
-    "prebuildify": "^6.0.0",
-    "tree-sitter-cli": "^0.22.6"
-  },
-  "peerDependencies": {
-    "tree-sitter": "^0.21.0"
-  },
-  "peerDependenciesMeta": {
-    "tree-sitter": {
-      "optional": true
-    }
-  },
+  "main": "index.js",
   "scripts": {
-    "install": "node-gyp-build",
-    "prebuildify": "prebuildify --napi --strip",
-    "build": "tree-sitter build",
-    "build-wasm": "tree-sitter build --wasm",
-    "test": "tree-sitter test",
-    "parse": "tree-sitter parse"
+    "build": "gcc -c parser.c -o parser.o && gcc -c grammar.c -o grammar.o && gcc parser.o grammar.o -o tree-sitter-hugo"
   },
-  "tree-sitter": [
-    {
-      "scope": "source.hugo",
-      "injection-regex": "^hugo$"
-    }
-  ]
+  "dependencies": {
+    "tree-sitter-html": "^1.0.0",
+    "tree-sitter-go-template": "^1.0.0"
+  }
 }
