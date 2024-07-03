@@ -1,11 +1,18 @@
-// <reference types="tree-sitter-cli/dsl" />
-// @ts-check
+module.exports = grammar(require('tree-sitter-html/grammar'), {
+  name: 'hugo',
 
-// module.exports = grammar({
-//  name: "hugo",
+  // Rozszerz gramatykę HTML o nowe reguły
+  extras: ($, original) => original.concat([/[\s\uFEFF\u2060\u200B\u00A0]+/]),
 
-//  rules: {
-    // TODO: add the actual grammar rules
-    source_file: $ => "hello"
-//  }
-// });
+  rules: {
+    // Dodaj nową regułę dla Hugo
+    hugo_template: $ => seq(
+      '{{',
+      repeat(/[^}]/),
+      '}}'
+    ),
+
+    // Rozszerz istniejącą regułę, np. `text`, o Hugo
+    text: ($, original) => choice(original, $.hugo_template),
+  }
+});
