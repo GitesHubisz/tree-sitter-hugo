@@ -1,17 +1,25 @@
-FROM node:14
-
-ENV NODE_DIR /usr/local
-
-ENV PATH $NODE_DIR/bin:$PATH
+FROM ubuntu:20.04 as builder
 
 WORKDIR /app
 
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt update -qq && apt install -yqq nodejs npm
+
 COPY package*.json ./
 
-RUN npm install
+RUN npm install --force
 
-COPY . /.git/ *
+COPY . .
+
+RUN npm install tree-sitter-cli --force
 
 RUN npm run build
 
-CMD ["npm", "run", "build"]
+FROM ubuntu:20.04
+
+WORKDIR /app
+
+COPY --from=builder /app/dist .
+
+CMD ["node", "index.js"]
