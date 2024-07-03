@@ -1,5 +1,4 @@
 #include <tree_sitter/parser.h>
-#include "../tree-sitter-html/src/parser.c"
 #include <wctype.h>
 #include "../tree-sitter-html/src/parser.c"
 
