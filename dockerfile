@@ -1,26 +1,17 @@
-# Etap budowy
-FROM node:16-buster AS build
+FROM node:14
 
-# Zainstaluj narzędzia do kompilacji (możliwe, że potrzebne do budowy zależności npm)
-RUN apt-get update && apt-get install -y build-essential git
+ENV NODE_DIR /usr/local
 
-# Skopiuj pliki projektu
-WORKDIR /app
-COPY . .
+ENV PATH $NODE_DIR/bin:$PATH
 
-# Instaluj zależności i buduj
-RUN npm install && npm run build
-
-# Etap uruchomieniowy
-FROM node:16-buster
-COPY --from=build /app /app
 WORKDIR /app
 
-# Instalacja zależności tylko do uruchomienia, jeśli to konieczne
-# RUN npm install --only=production
+COPY package*.json ./
 
-# Eksponuj port serwera, jeśli masz aplikację nasłuchującą na tym porcie
-# EXPOSE 8080
+RUN npm install
 
-# Ustawienie komendy uruchomieniowej
-CMD ["npm", "start"] # Lub coś innego, co uruchamia Twoją aplikację
+COPY . /.git/ *
+
+RUN npm run build
+
+CMD ["npm", "run", "build"]

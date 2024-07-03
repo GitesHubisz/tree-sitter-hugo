@@ -1,11 +1,15 @@
 {
   "name": "tree-sitter-hugo",
   "version": "0.0.1",
-  "main": "node/index.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "build": "gcc -c parser.c -o parser.o && gcc -c grammar.c -o grammar.o && gcc parser.o grammar.o -o tree-sitter-hugo"
+    "build": "tree-sitter generate"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "tree-sitter-html": "latest"
+    "tree-sitter": "^0.20.1"
   }
 }
